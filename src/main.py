@@ -34,6 +34,14 @@ def health():
     return {"message": "OK 🍾 "}
 
 
+@app.get("/get_objects")
+async def get_objects():
+   try fetch_objects_from_server():
+       return {"status": "got em"}
+   except Exception as e: 
+       raise HTTPException(status_code=500, detail=f"Error getting object : {str(e)}")
+
+
 @app.post("/retrain")
 async def retrain_model():
     try:
