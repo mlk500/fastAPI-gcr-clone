@@ -11,7 +11,6 @@ api_url = os.environ["FETCH_OBJECTS_API"]
 
 def fetch_objects_from_server() -> List[DetectableObject]:
     try:
-        print("api url is ", api_url)
         response = requests.get(api_url)
         if response.status_code == 200:
             objects = response.json()

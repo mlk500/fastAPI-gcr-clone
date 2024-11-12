@@ -101,18 +101,18 @@ def save_model_to_gcs(model, class_indices, model_dir: str):
 
         ############### tflite -- might be deleted ###############
 
-        try:
-            converter = tf.lite.TFLiteConverter.from_keras_model(model)
-            tflite_model = converter.convert()
+        # try:
+        #     converter = tf.lite.TFLiteConverter.from_keras_model(model)
+        #     tflite_model = converter.convert()
 
-            tflite_model_path = f"{model_dir}/model.tflite"
-            blob = bucket.blob(tflite_model_path)
-            blob.upload_from_string(tflite_model)
-            print(
-                f"TFLite model saved successfully at gs://{BUCKET_NAME}/{tflite_model_path}"
-            )
-        except Exception as e:
-            print(f"Error converting model to TFLite format: {e}")
+        #     tflite_model_path = f"{model_dir}/model.tflite"
+        #     blob = bucket.blob(tflite_model_path)
+        #     blob.upload_from_string(tflite_model)
+        #     print(
+        #         f"TFLite model saved successfully at gs://{BUCKET_NAME}/{tflite_model_path}"
+        #     )
+        # except Exception as e:
+        #     print(f"Error converting model to TFLite format: {e}")
 
     return f"gs://{BUCKET_NAME}/{model_dir}"
 
